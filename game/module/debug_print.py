@@ -1,6 +1,7 @@
 from icecream import ic
 
 def debug_print(text_to_print_in_terminal, text_color_str="white", bg_color_str="black"):
+    text_color_nbr = 37
     if text_color_str == "red":
         text_color_nbr = 31
     if text_color_str == "green":
@@ -10,10 +11,11 @@ def debug_print(text_to_print_in_terminal, text_color_str="white", bg_color_str=
     if text_color_str == "blue":
         text_color_nbr = 34
     if text_color_str == "black":
-        text_color_nbr = 36
+        text_color_nbr = 30
     if text_color_str == "white":
         text_color_nbr = 37
 
+    bg_color_nbr = 40
     if bg_color_str == "red":
         bg_color_nbr = 41
     if bg_color_str == "green":

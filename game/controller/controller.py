@@ -1,3 +1,5 @@
+import sys
+
 import tkinter as tk
 from icecream import ic
 
@@ -55,6 +57,10 @@ class Controller:
         self.game.grid.create_tiles()
         self.game.grid.place_first_4_tiles(self)
 
+        self.game.grid.empty_clickable_tiles_list()
+        self.game.find_clickable_tiles()
+        # TODO: Ensuite, je dois relancer la recherche à chaque clique sur une tuile clicable.
+
         #
         # view
         #
@@ -86,12 +92,26 @@ class Controller:
                 print(self.game.grid.get_tiles_dict()[f"{x}x{y}"].get_owner(), end="|")
             print("----------------------------------------")
 
-        response = self.game.can_i_move(clicked_tile, self)
-        if response == True:
-            debug_print("I'm placing my pawn")
-            self.game.play_the_move(clicked_tile)
-        else:
-            print("Impossible de jouer à cet endroit !")
+        for straight_tiles_list in self.game.grid.get_clickable_tiles_list():
+            for tile in straight_tiles_list:
+                debug_print(tile.get_name(), "black", "green")
+            print("----------------------------------------")
+
+        for straight_tiles_list in self.game.grid.get_clickable_tiles_list():
+            if clicked_tile == straight_tiles_list[0]:
+
+                self.game.reverse_tiles_of_list(straight_tiles_list)
+                self.game.change_player_to_play()
+                self.game.grid.empty_clickable_tiles_list()
+                self.game.find_clickable_tiles()
+                # response = self.game.can_i_move(clicked_tile)
+                # if response == True:
+                #     debug_print("Placing the pawn")
+                #     self.game.play_the_move(clicked_tile)
+                #     debug_print("Pawn placed")
+            # else:
+            #     print()
+            #     debug_print("Impossible de jouer à cet endroit !", "blue", "white")
 
         # Display the new pawn
         self.main_view.grid_view.display_pawns_views(self)
@@ -101,6 +121,7 @@ class Controller:
             for x in range(0,8):
                 print(self.game.grid.get_tiles_dict()[f"{x}x{y}"].get_owner(), end="|")
             print("----------------------------------------")
+        print(f"C'est à {self.game.get_playername_to_play()} de jouer")
         print()
         print()
         print("\033[0;37;40m")

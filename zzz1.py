@@ -1,15 +1,5 @@
-class BB:
+dd = {"un": 1, "deux": 2, "trois": 3, "quatre": 4}
 
-    def __init(self):
-        pass
+for elt in dd.values():
+    print(elt)
 
-    def return_it(self):
-        return True
-
-class CC:
-
-    def __init(self):
-        pass
-
-    def goto(self, bb):
-        bb.return_it

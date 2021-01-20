@@ -47,8 +47,6 @@ class PawnView:
 
         self.__border_color_nbr = 0 if self.__pawn.get_owner() == PLAYER_NBR1 else 1
 
-        debug_print(f"Tile color is nbr: {COLORS_DICT[self.__pawn.get_owner()]}", text_color_str="white", bg_color_str="black")
-
         grid_canvas.create_oval(
             self.top_left_x_pos,
             self.top_left_y_pos,

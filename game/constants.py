@@ -31,6 +31,7 @@ INDEX_OF_LAST_ROW = 7
 KEY_ERROR = "keyError"
 THERE_IS_NO_TILE = "No more tile"
 NO = 0
+NOT_YET = "not yet"
 OTHELLO_TILE_DICT = {"color_nbr": 0,
                      "border_color_nbr": 1}
 OTHELLO_TILE_HEIGHT = 100
@@ -48,3 +49,5 @@ TO_THE_TOP = "to the top"
 TO_THE_TOP_LEFT = "to the top left"
 TO_THE_TOP_RIGHT = "to the top right"
 YES = 1
+YES__NO_MORE_USED_TILE = "No more used tile"
+YES__SAME_COLOR_REACHED = "Same color reached"
